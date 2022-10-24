@@ -1,0 +1,354 @@
+<html>
+    <script src="{{url_for('user_upload.static',filename='./js/vue.js')}}"></script>
+    <script src="{{url_for('user_upload.static',filename='./js/axios.js')}}"></script>
+    <style>
+        body{
+            background-color: #66a76b63;
+        }
+        #vue{
+            display: flex;
+            margin: auto;
+            flex-direction: column;
+            width: 400px;
+            margin-top: 140px;
+            background-color: #675c9929;
+            height: 300px;
+            border-radius: 5px;
+            border: 2px solid white;
+            box-shadow: 2px 3px 20px 3px white;
+        }
+        #code{
+            width: 120px;
+            height: 30px;
+            border-radius: 3px;
+            border: 2px solid #008b89;
+            color: white;
+            background-color: #21a394;
+        }
+        #send{
+            border: 1px solid #5190ff;
+            border-radius: 2px;
+            height: 28px;
+            background-color: #1c81e1;
+            cursor: pointer;
+            color: white;
+            margin-top: 10px;
+        }
+        #select{
+            margin-right: 4px;
+            border: 2px solid #00c53b;
+            height: 28px;
+            border-radius: 3px;
+                }
+        .margin-auto{
+            margin: auto;
+        }
+        .two_conp{
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+            margin-top: 40px;
+        }
+        .check-box{
+            display: flex;
+            flex-direction: column;
+            margin: auto;          
+        }
+        /* From uiverse.io by @adamgiebl */
+        .cssbuttons-io-button {
+        cursor: pointer;
+        width: 110px;
+        margin: auto;
+        margin-top: 10px;
+        background: #00b730;
+        color: white;
+        font-family: inherit;
+        padding: 0.35em;
+        padding-left: 1.2em;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+        border: none;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        box-shadow: inset 0 0 1.6em -0.6em #195215;
+        overflow: hidden;
+        position: relative;
+        height: 35px;
+        padding-right: 3.3em;
+        }
+
+
+        .cssbuttons-io-button .icon {
+        background: white;
+        margin-left: 1em;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        width: 25px;
+        border-radius: 0.7em;
+        border-radius: 3px;
+        box-shadow: 0.1em 0.1em 2px 2px #0d6c16;
+        right: 0.3em;
+        transition: all 0.3s;
+        }
+
+        .cssbuttons-io-button:hover .icon {
+        width: calc(100% - 0.6em);
+        }
+
+        .cssbuttons-io-button .icon svg {
+        width: 1.1em;
+        transition: transform 0.3s;
+        color: #0f8900;
+        }
+
+        .cssbuttons-io-button:hover .icon svg {
+        transform: translateX(0.1em);
+        }
+
+        .cssbuttons-io-button:active .icon {
+        transform: scale(0.95);
+        }
+/* From uiverse.io by @AqFox */
+.spinner {
+margin: auto;
+margin-top: 35px;
+ width: 44px;
+ height: 44px;
+ animation: spinner-y0fdc1 2s infinite ease;
+ transform-style: preserve-3d;
+}
+
+.spinner > div {
+ background-color: rgba(0,77,255,0.2);
+ height: 100%;
+ position: absolute;
+ width: 100%;
+ border: 2px solid #004dff;
+}
+
+.spinner div:nth-of-type(1) {
+ transform: translateZ(-22px) rotateY(180deg);
+}
+
+.spinner div:nth-of-type(2) {
+ transform: rotateY(-270deg) translateX(50%);
+ transform-origin: top right;
+}
+
+.spinner div:nth-of-type(3) {
+ transform: rotateY(270deg) translateX(-50%);
+ transform-origin: center left;
+}
+
+.spinner div:nth-of-type(4) {
+ transform: rotateX(90deg) translateY(-50%);
+ transform-origin: top center;
+}
+
+.spinner div:nth-of-type(5) {
+ transform: rotateX(-90deg) translateY(50%);
+ transform-origin: bottom center;
+}
+
+.spinner div:nth-of-type(6) {
+ transform: translateZ(22px);
+}
+
+@keyframes spinner-y0fdc1 {
+ 0% {
+  transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+ }
+
+ 50% {
+  transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+ }
+
+ 100% {
+  transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+ }
+}
+
+
+
+/* From uiverse.io by @adamgiebl */
+#fly {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 118px;
+    transition: all 0.2s;
+    margin: auto;
+    cursor: pointer;
+    height: 50px;
+    box-shadow: 1px 2px 20px 0px #7b7dcf;
+    margin-top: 0px;
+}
+
+#fly span {
+ display: block;
+ margin-left: 0.3em;
+ transition: all 0.3s ease-in-out;
+}
+
+#fly svg {
+ display: block;
+ transform-origin: center center;
+ transition: transform 0.3s ease-in-out;
+}
+
+#fly:hover .svg-wrapper {
+ animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+#fly:hover svg {
+ transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+#fly:hover span {
+ transform: translateX(5em);
+}
+
+#fly:active {
+ transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+ from {
+  transform: translateY(0.1em);
+ }
+
+ to {
+  transform: translateY(-0.1em);
+ }
+}
+
+    </style>
+    <body>
+        <div id="vue">
+            <h3 style="text-align: center;"> XMTYET 登陆验证</h3>
+            <div class="two_conp" v-show="head">
+                <select id="select" class="margin-auto" v-model="account">
+                    <option value="" disabled selected>选择您的账号</option>
+                    <option value="Kuang">Kuang</option>
+                    <option value="ShiXu">ShiXu</option>
+                    <option value="Admin">Admin</option>
+                    <option value="other_account">其他账号</option>
+                </select>
+                <input type="text" v-model="account_other" v-show="account=='other_account'" style="width: 129px;"
+                placeholder="请输入企业微信前缀"
+                ><span  v-show="account=='other_account'"
+                style="text-align: center;
+                align-content: center;
+                font-size: 14px;
+                line-height: 28px;">@xmtyet.com</span> 
+                
+            </div>
+            <button id="fly" v-show="head" @click="login">
+                <div class="svg-wrapper-1">
+                  <div class="svg-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                      <path fill="none" d="M0 0h24v24H0z"></path>
+                      <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <span>Send</span>
+            </button>
+            <!-- <button id="send" class="margin-auto" @click="login">发送验证码</button> -->
+
+            <div class="spinner" v-show="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="check-box" v-show="codeBox">
+                <h3>请输入验证码</h3>
+                <input id="code" class="margin-auto" type="text" v-model="code">
+                <button class="cssbuttons-io-button" @click="check"> 确 认
+                    <div class="icon">
+                      <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
+                    </div>
+                  </button>
+                <!-- <button id="check" class="margin-auto" @click="check"> 确认</button> -->
+            </div>
+              
+        </div>
+        <script>
+            let login = new Vue({
+                el: "#vue",
+                delimiters: ['${', '}'],
+                data:{
+                    account_other: '',
+                    code: '',
+                    account: '',
+                    spinner: false,
+                    codeBox: false,
+                    head: true
+                },
+                methods:{
+                    login(){
+                        let vm = this
+                        if(vm.account==''){
+                            return alert("请选择账号！")
+                        }
+                        if(vm.account=='other_account'){
+                            if(vm.account_other==''){
+                                return alert("请输入邮箱！")
+                            }else{
+                                vm.account = vm.account_other
+                            }
+                        }
+                        vm.head = false
+                        vm.spinner = true
+                        axios.post(
+                            '/message/login/',
+                            {
+                                account: vm.account
+                            }
+                            ).then(function (response) {
+                                console.log(response)
+                                vm.head = false
+                                vm.spinner = false
+                                vm.codeBox = true
+                            }
+                        )
+                    },
+                    check(){
+                        let vm = this
+                        axios.post(
+                            '/message/check_code/',
+                            {
+                                code: vm.code
+                            }
+                            ).then(function (response) {
+                                console.log(response)
+                                if(response.data.check==true){
+                                    location.reload() 
+                                }else{
+                                    alert('验证码错误')
+                                }
+                            }
+                        )
+                    }
+                }
+            })
+        </script>
+    </body>
+
+</html>

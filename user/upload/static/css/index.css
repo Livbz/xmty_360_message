@@ -1,0 +1,145 @@
+html,body,#container{
+    height: 100%
+  }
+  .input-item{
+    height: 2.2rem;
+  }
+  .btn{
+    width: 6rem;
+    margin: 0 1rem 0 2rem;
+  }
+  .input-text{
+    width: 4rem;
+    margin-right:1rem;
+  }
+
+  .custom-content-marker{
+    width: 100%;
+    height: 100%;
+}
+
+#panel {
+  position: absolute;
+  background-color: white;
+  max-height: 90%;
+  overflow-y: auto;
+  top: 10px;
+  right: 10px;
+  width: 280px;
+}
+
+.close-btn-check {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  background: #f34234;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 15px;
+  box-shadow: -1px 1px 1px rgba(10, 10, 10, .2);
+}
+
+
+.custom-content-marker .close-btn {
+    position: absolute;
+    top: -6px;
+    /* right: -8px; */
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    background: #9e9e9e;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 15px;
+    box-shadow: -1px 1px 1px rgba(10, 10, 10, .2);
+}
+
+.custom-content-marker .close-btn:hover{
+    background: #666;
+}
+
+.input-card-cus{
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  width: 22rem;
+  border-width: 0;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 6px 0 rgb(114 124 245 / 50%);
+  position: fixed;
+  top: 1rem;
+  flex: 1 1 auto;
+  padding: 0.75rem 1.25rem;
+  left: 1rem;
+  text-align: center;
+}
+
+.lable_layer{
+  display: block;
+  position: absolute;
+  background-color: white;
+  padding: 0px 2px;
+  border: solid 1px #cfcfcf;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #8080805c;
+  width: max-content;
+}
+
+
+.lable {
+  display: none;
+  position: absolute;
+  background-color: white;
+  padding: 0px 2px;
+  border: solid 1px #cfcfcf;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #8080805c;
+  width: max-content;
+}
+
+.rowFlex{
+  display: flex;
+  flex-direction: row;
+}
+
+#headImg{
+  margin: auto;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#headText{
+  margin: auto;
+  font-size: 18px;
+  margin-left: 2px;
+}
+
+.changeMarker{
+  margin: auto;
+  background-color: #f3f3f38f;
+  border: solid 2px #e1e1e1c2;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.fenpei{
+  margin: auto;
+  background-color: #f3f3f38f;
+  border: solid 2px #e1e1e1c2;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 87%;
+  cursor: pointer;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='upload.css')}}">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="box" style="text-align: center;">
+        <p>{{filename}}</p>
+        <p><a href='{{url_for("user_power.download_api")}}' onclick="func()">下载结果</a></p>
+
+        <div id="moreAction" style="display: none;">
+            <p>请仔细核验、比对原图片与生成的Excel文件，然后再上传，以获得最终的汇总结果</p>
+
+            <form name="myForm" method="post" id="myForm" action="" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="fileToUpload"><br>
+
+                <div name="r">
+                    <span>公司名称：<input type="text" onchange="check()" name="companyname" value="{{name}}"></span>
+                    <span>用电户号：</span><input type="number" onchange="check()" name="account" value="{{name}}">
+                    <span>用电类型：</span><select name="usertype" onchange="check()">
+                        <option value=""></option>
+                        <option value="商业">商业</option>
+                        <option value="工业">工业</option>
+                    </select>
+                    <span>电压等级：</span><input type="number" name="voltage" placeholder="电压等级" onchange="check()"
+                        style="width: 100px;"><span>（千伏）</span>
+                    <span>变压器容量：</span><input type="number" name="volumn" placeholder="变压器容量" onchange="check()"
+                        style="width: 100px;"><span>（千伏安）</span>
+                </div>
+                <p><span id="hint"></span></p>
+                <input type="submit" value="提交" disabled id="gogogo">
+                <input type="hidden" name="token" value="<?php echo $_SESSION['o_token']?>">
+            </form>
+            <p>-------------------------------------</p>
+        </div>
+    </div>
+
+</body>
+<script>
+    function func() {
+        var action = document.getElementById("moreAction");
+        action.style.display = "";
+    }
+</script>
+<script>
+    function check() {
+        var companyCheck = $("[name='companyname']")[0].value != "";
+        var accountCheck = $("[name='account']")[0].value != "";
+        var userCheck = $("[name='usertype']")[0].value != "";
+        var voltageCheck = $("[name='voltage']")[0].value != "";
+        var volumnCheck = $("[name='volumn']")[0].value != "";
+
+        var checked = companyCheck && accountCheck && userCheck && voltageCheck && volumnCheck;
+        if (checked) {
+            document.getElementById("hint").innerText = "√";
+            document.getElementById("gogogo").outerHTML = '<input type="submit" value="提交" class="button" id="gogogo">'
+        } else {
+            document.getElementById("hint").innerText = "请填写相关信息。";
+            document.getElementById("gogogo").outerHTML = '<input type="submit" value="提交" class="button" disabled id="gogogo">'
+        }
+        
+
+    }
+</script>
+<script>
+    check();
+</script>
+
+</html>

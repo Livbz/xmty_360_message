@@ -1,0 +1,49 @@
+/* 三栏布局，中间自适应高度... */
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(30, 171, 226);
+    margin: 0;
+    padding: 0;
+}
+.head{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(30, 171, 226);
+    text-align: center;
+}
+.container{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    top: 100px;
+    bottom: 100px;
+}
+.left-group{
+    width: 400px;
+    background-color: #7ecff2;
+    text-align: center;
+}
+.right-group{
+    width: 400px;
+    background-color: #65c7f1;
+    text-align: center;
+}
+.mid-group{
+    flex: 1;
+    background-color: #4dbdec;
+    text-align: center;
+}
+.foot{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    background-color: #41c0f7;
+    text-align: center;
+}
+#l{
+    padding-left: 10%;
+}

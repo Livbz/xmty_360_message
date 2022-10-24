@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='upload.css')}}">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="box">
+    <p>提取短信</p>
+        <form name="myForm" method="post" id="myForm" action="" enctype="multipart/form-data">
+            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+
+            <input type="submit" value="提交">
+            <input type="hidden" name="token" value="<?php echo $_SESSION['o_token']?>"> 
+        </form>
+        <p>-------------------------------------</p>
+
+    </div>
+</body>
+
+</html>

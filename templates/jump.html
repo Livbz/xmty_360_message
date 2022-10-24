@@ -1,0 +1,22 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta  http-equiv="refresh"  content="5;url={{url_for(redirect_target)}}"/>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}">
+
+</head>
+<body>
+    <div id="box">
+        <h1 id = "title">
+            {{redirect_reason}}
+        </h1>
+        <p>5秒后跳转至<a href="{{url_for(redirect_target)}}">页面<?php echo $redirectURL;?></a></p>
+        <!--<p id="last">Change Password<a href="changePasswordLogin.html">register!!!</a></p>-->        
+    </div>
+    
+</body>
+<script>
+    document.getElementById("userName").value="";
+</script>
+</html>

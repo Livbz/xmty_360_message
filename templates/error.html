@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='upload.css')}}">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="box">
+        <p>程序在以下短信中检测到了错误</p>
+        <ol>
+            {% for data in datas %}
+            <li>{{data}}</li>
+            {% endfor %}
+        </ol>
+        <p>请查证并修改上传的文件后，再重新进行上传分析</p>
+        <p>建议的检测项目如下</p>
+        <ol>
+            <li>检测数字的完整性，是否存在不规范的数字，例如1236.3.2</li>
+            <li>检测文字的完整性，是否存在缺字或漏字</li>
+            <li>短信中符号的缺少或字符的缺少，都会报错，不可或缺的字符见下文加粗部分</li>
+        </ol>
+
+        <p>【国网客服中心】尊敬的用电客户<b>（户号</b>0503879181<b>），您用电周期</b>2020-08-15 - 2020-09-15<b>内，电量</b>14010<b>度，电费</b>7514.96<b>元</b>。实际电量电费信息以当月实际抄表记录为准。如有疑问，请致电95598咨询。【国家电网95598】。</p>
+        <a href='{{url_for("user_upload.u_u_upload")}}'>返回</a>
+
+
+
+    </div>
+</body>
+
+</html>

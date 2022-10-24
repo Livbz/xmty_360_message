@@ -1,0 +1,3 @@
+activate flask
+cd C:\Users\dyd\Desktop\f_online
+python createDB.py

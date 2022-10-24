@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='upload.css')}}">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="box">
+        <h1 id="hint">文件识别中</h1>
+        <button disabled id="button" onclick="href">获取文件</button>
+
+    </div>
+</body>
+<script>
+    state_json = "";
+    $(document).ready(function() {
+        state_json = $.ajax({ url: "{{url_for('user_power.analysis_api')}}", async: false });
+        document.getElementById("hint").innerText = "识别成功，请下载";
+        document.getElementById("button").innerHTML = '<button id="button" onclick="window.location.href=\'{{url_for("user_power.download_phase_one")}}\'">获取文件</button>'
+    });
+</script>
+
+</html>

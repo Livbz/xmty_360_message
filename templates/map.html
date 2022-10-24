@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>批量地理编码</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <style>
+        html,
+        body,
+        #container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .btn {
+            width: 10rem;
+            margin-left: 6.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode:'1ee11b55ee0cfbd9056cbfc939a936ae',
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=2.0&key=96353ecd8eae997a6a66699ca34f48b3&plugin=AMap.Geocoder"></script>
+    <script type="text/javascript">
+        var map = new AMap.Map("container", {
+            resizeEnable: true
+        });
+
+        var geocoder = new AMap.Geocoder({
+            city: "眉山",
+        });
+        var markers = [];
+    function geoCode(_address,_name) {
+            map.remove(markers);
+            markers = [];
+            geocoder.getLocation(_address, function (status, result) {
+                if (status === 'complete' && result.geocodes.length) {
+                        var content = '<div style="color: transparent;" click="this.style.color=black">' + _name + '</div> <span>'+_address +'</span>';
+                        var marker = new AMap.Marker({
+                            position: result.geocodes[0].location
+                        });
+                        marker.setLabel({
+                            offset: new AMap.Pixel(20, 20),  //设置文本标注偏移量
+                            content: "<div class='info'>"+ _address +"</div>", //设置文本标注内容
+                            direction: 'right' //设置文本标注方位
+                        });
+                        markers.push(marker);
+                    map.add(markers);
+                    // map.setFitView(markers);
+                }else{
+                   console.log(status) 
+                }
+            });
+        }
+         
+        address_ = [
+['四川泽远商业管理有限公司','四川省眉山市东坡区东坡印象商业水街东侧地下室109号 18113660050 455'],
+['四川瀚洲化工科技有限','四川省眉山市东坡区顺江大道北二段21号 13550526687'],
+['今麦郎饮品眉山有限公司','四川省眉山市东坡区崇礼镇泡菜大道9号	18188303057	700'],
+['眉山市瑞通机械有限责任公司','眉山经济开发区东区（泡菜城）	13708169858	367'],
+['眉山市锐刚包装有限公司','眉山经济开发区	13568307722	'],
+['四川德峰药业有限公司','眉山经济开发区新区香樟路5号	15328743139	430'],
+['四川王家渡食品有限公司','眉山市经济开发区科工园一路	15984303552	'],
+['眉山中车制动科技股份有限公司','眉山市科工园三路68号	13909034112	395'],
+['四川伊诺达博医药科技有限公司','四川省眉山市东坡区经开新区西部药谷玉兰路13号	18909037441	442'],
+['四川年年丰生物技术有限公司','眉山金象化工产业园区	13980371738	66'],
+['四川眉山凯尔化工有限公司','眉山市金象化工产业园区	何部长13183651896	119'],
+['四川美裕铝业有限公司','四川省眉山市铝硅产业园区启明路10号	杜主任：18048780203	585'],
+['四川中亿新威能源有限公司','四川省眉山市东坡区铝硅产业园	陈经理：13880419417	1256'],
+['四川华澳铝业有限公司','眉山市东坡区铝硅产业园区进修路7号	13778862726	'],
+['四川金字塔饲料科技有限公司','眉山市东坡区松江镇眉青村	13990340990	67'],
+['四川省大为金山石膏新型建材有限公司','眉山市东坡区松江镇进站路光荣村	13378355739	65'],
+['四川省和缘钢化玻璃有限公司','眉山市东坡区松江镇光荣村5组（进站路口附近）	18980001058	224'],
+['眉山市华庆建材科技有限公司','四川省眉山市东坡区思蒙镇宋堰村5组	18990304999	2775'],
+['眉山峨兴水泥有限责任公司','眉山市东坡区思蒙镇娴婆村2组	18990358390	847'],
+['四川省恒谊食品有限公司','眉山市东坡区万胜镇花园西街13号	13990338111	31'],
+['四川富生电器有限责任公司','四川省眉山市东坡区眉州大道西6段6号	13890377775	2865'],
+['四川国耀铝业有限公司','四川省眉山市修文镇铝硅产业园区	18990390623	382'],
+['四川阳光坚端铝业有限公司','四川省眉山市东坡区修文镇甘眉工业园区团结路4号	13551261502	1713'],
+['四川美金龙化纤有限公司','四川眉山市彭山经济开发区	13568319139	1242'],
+['眉山市彭山永祥饲料有限责任公司','眉山市彭山区青龙镇永远村	18990321576	608'],
+['四川恒鑫建材有限公司','四川省眉山市彭山区青龙镇永远村七社	18080399985	286'],
+['四川恒卓玻璃有限公司','眉山市彭山区青龙镇双莲路	13666250761	405'],
+['四川金山制药有限公司','眉山市彭山区青龙经济开发区	18628040648	213'],
+['眉山耐力复合材料有限公司','四川省眉山市彭山区青龙镇经济开发区龙都北一路175号	13540787615	189'],
+['四川保罗包装科技有限公司','四川省眉山市彭山区青龙镇龙都北路西段86号	13890300971	301'],
+['四川新农科技饲料有限公司','眉山市彭山区观音镇曾家村（工业园区	13350718379	167'],
+['四川金桐精细化学有限公司','眉山市彭山区观音镇梓桐村1-2组	陈18608227171	786'],
+['四川省晟源生物质能源有限公司','四川省眉山市彭山区观音镇梓桐村一组	13778876676	300'],
+['四川正方包装制品有限责任公司','四川省眉山市彭山区义和乡杨苗村2社	13980790876	105'],
+        ]
+        for(_add of address_){
+            geoCode(_add[0], _add[1])
+        }
+    </script>
+</body>
+
+</html>

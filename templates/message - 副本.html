@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='upload.css')}}">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function check(){
+            var company_checked = true;
+            var company = $("[name='companyname']")
+            company_bool = Array(company.length)
+
+            for(var i=0;i<company.length;i++){
+                company_bool[i] = company[i].value!=""
+                company_bool[i] = company_bool[i] && (company[i].value.indexOf("360")==-1)
+            }
+
+            for(var i=0;i<company.length;i++){
+                company_checked = company_checked&&company_bool[i]
+            }
+            if(!company_checked){
+                document.getElementById("hint1").innerText = "请填写公司名称。";
+            }else{
+                document.getElementById("hint1").innerText = "";
+            }
+            console.log("company_checked")
+            console.log(company_checked)
+
+
+
+            var rb_checked = true;
+            var rb = $("[name='rb']")
+            rb_bool = Array(rb.length)
+            for(var i=0;i<rb.length;i++){
+                rb_bool[i] = rb[i].value!=""
+            }
+            for(var i=0;i<rb.length;i++){
+                rb_checked = rb_checked&&rb_bool[i]
+            }
+
+            var voltage_checked = true;
+            var voltage = $("[name='voltage']")
+            voltage_bool = Array(voltage.length)
+            for(var i=0;i<voltage.length;i++){
+                voltage_bool[i] = voltage[i].value!=""
+            }
+            for(var i=0;i<voltage.length;i++){
+                voltage_checked = voltage_checked&&voltage_bool[i]
+            }
+
+            var volumn_checked = true;
+            var volumn = $("[name='volumn']")
+            volumn_bool = Array(volumn.length)
+            for(var i=0;i<volumn.length;i++){
+                volumn_bool[i] = volumn[i].value!=""
+            }
+            for(var i=0;i<voltage.length;i++){
+                volumn_checked = volumn_checked&&volumn_bool[i]
+            }
+
+            var usertype_checked = true;
+            var usertype = $("[name='usertype']")
+            usertype_bool = Array(usertype.length)
+            for(var i=0;i<usertype.length;i++){
+                usertype_bool[i] = usertype[i].value!=""
+            }
+            for(var i=0;i<voltage.length;i++){
+                usertype_checked = usertype_checked&&usertype_bool[i]
+            }
+
+            if(voltage_checked&&volumn_checked){
+                document.getElementById("hint2").innerText = "";
+            }else{
+                document.getElementById("hint2").innerText = "若拿不到电压等级或变压器容量，请填写0";
+            }
+
+            var checked = rb_checked&&voltage_checked&&volumn_checked&&usertype_checked&&company_checked
+            if(checked){
+                document.getElementById("hint").innerText = "√";
+                document.getElementById("gogogo").outerHTML='<input type="submit" value="提交" class="button" id="gogogo">'
+            }else{
+                document.getElementById("hint").innerText = "请填写相关信息。";
+                document.getElementById("gogogo").outerHTML='<input type="submit" value="提交" class="button" disabled id="gogogo">'
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="box">
+        <h1 style="text-align: center;">请输入用户信息</h1>
+        <p>文件名：{{prefix}}</p>
+        <form action='{{url_for("user_upload.download")}}' method="post">
+            {% for file in file_list %}
+            <div name="r">
+                <span>公司名称：<input type="text" onchange="check()" name="companyname" value="{{name}}"></span>
+                <span>用电户号：</span><select name="accountnumber"><option value="{{file}}">{{file}}</option></select>
+                <span>用电类型：</span><select name="usertype" onchange="check()">
+                    <option value=""></option>
+                    <option value="商业">商业</option>
+                    <option value="工业">工业</option>
+                </select>
+                <span>电压等级：</span><input type="number" name="voltage" step="0.01" placeholder="电压等级" onchange="check()" style="width: 100px;"><span>（千伏）</span>
+                <span>变压器容量：</span><input type="number" name="volumn" placeholder="变压器容量" onchange="check()" style="width: 100px;"><span>（千伏安）</span>
+            </div>
+            {% endfor %}
+            <input type="submit" value="提交" class="button" disabled id="gogogo">
+            <p><span id="hint"></span></p>
+            <p><span id="hint1"></span></p>
+            <p><span id="hint2"></span></p>
+        </form>
+
+    </div>
+</body>
+    <script>
+        check()
+    </script>
+</html>

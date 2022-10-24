@@ -1,0 +1,107 @@
+#panel{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  padding: 10px 8px;
+  box-shadow: 5px 5px 10px 6px #80808080;
+}
+
+#panel .amap-call {
+    background-color: #009cf9;
+    border-top-left-radius: 4px;
+       border-top-right-radius: 4px;
+}
+#panel .amap-lib-transfer {
+    border-bottom-left-radius: 4px;
+       border-bottom-right-radius: 4px;
+    overflow: hidden;
+}
+
+html,body,#container{
+    height: 100%
+  }
+  .input-item{
+    height: 2.2rem;
+  }
+  .btn{
+    width: 6rem;
+    margin: 0 1rem 0 2rem;
+  }
+  .input-text{
+    width: 4rem;
+    margin-right:1rem;
+  }
+
+  .custom-content-marker {
+    position: relative;
+    width: 25px;
+    height: 34px;
+}
+
+.custom-content-marker img {
+    width: 100%;
+    height: 100%;
+}
+
+.custom-content-marker .close-btn {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    line-height: 15px;
+    box-shadow: -1px 1px 1px rgba(10, 10, 10, .2);
+}
+
+.custom-content-marker .close-btn:hover{
+    background: #666;
+}
+
+.lable_layer{
+  display: block;
+  position: absolute;
+  background-color: white;
+  padding: 0px 2px;
+  border: solid 1px #cfcfcf;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #8080805c;
+  width: max-content;
+}
+
+.lable {
+  display: block;
+  position: absolute;
+  background-color: white;
+  padding: 0px 2px;
+  border: solid 1px #cfcfcf;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #8080805c;
+  width: max-content;
+}
+
+#showBotton{
+  border: solid 2px #7d9f81;
+  border-radius: 3px;
+  padding: 6px 6px;
+  cursor: pointer;
+}
+
+#infoSpan{
+  margin: auto;
+  margin-top: 10px;
+  font-size: 13px;
+  color: white;
+  font-weight: 500;
+  background-color: #538d53;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
